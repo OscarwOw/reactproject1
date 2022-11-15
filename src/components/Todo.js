@@ -9,6 +9,9 @@ function Todo(props) {
     function DeleteHandler() {
         setModalIsOpen(true);
     }
+    function closeDeleteHandler() {
+        setModalIsOpen(false);
+    }
 
 
     return (
@@ -17,11 +20,11 @@ function Todo(props) {
             <div className='Actions'>
                 <button className='btn' onClick={DeleteHandler}>Delete</button>
             </div>
-            {modalIsOpen && <Modal />}
-            {modalIsOpen && <Backdrop />}
+            {modalIsOpen && <Modal onCancel={closeDeleteHandler} onConfirm={closeDeleteHandler} />}
+            {modalIsOpen && <Backdrop onClick={closeDeleteHandler} />}
 
         </div>
     );
 }
 
-export default Todo;
+export default Todo; 
